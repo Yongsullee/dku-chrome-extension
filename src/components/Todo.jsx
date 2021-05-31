@@ -20,10 +20,6 @@ const Todo = ({ toggleTheme }) => {
       window.alert('과목명에 내용을 입력 해주세요 ');
       return;
     }
-    if (!subject.end_at) {
-      window.alert('마감일을 선택 해주세요 ');
-      return;
-    }
 
     setTodos(prevTodos => {
       const newTodos = [...prevTodos, subject];
@@ -108,6 +104,7 @@ const Todo = ({ toggleTheme }) => {
 };
 
 const TodoConatiner = styled.div`
+  height: 100%;
   width: 100%;
 `;
 

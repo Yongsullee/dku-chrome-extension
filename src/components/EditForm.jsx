@@ -22,7 +22,6 @@ const EditForm = ({
 
   const editSubmitHandler = () => {
     if (!editInput) {
-      window.alert('수정할 내용을 입력하세요');
       return;
     }
 

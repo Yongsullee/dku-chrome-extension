@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import Todo from './Todo';
+import Todo from './Todo.jsx';
 import COLOR from '../common/constants/index';
 import themes from '../provider/theme';
 
@@ -45,6 +45,7 @@ const AppWrapper = styled.div`
   transition: all 0.4s line ar;
   font-family: “Helvetica Neue”, Helvetica, Arial, sans-serif;
   color: ${({ theme }) => theme.textColor};
+  height: 100%;
   z-index: 21474836456;
   border-radius: 16px;
   margin: 0;
@@ -57,6 +58,19 @@ const AppWrapper = styled.div`
   textarea:focus,
   button:focus {
     outline: none;
+  }
+  overflow: auto scroll;
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 6px;
+    background: ${({ theme }) => theme.backgroundColor};
+  }
+  &::-webkit-scrollbar-thumb {
+    color: ${({ theme }) => theme.color};
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
   }
 `;
 

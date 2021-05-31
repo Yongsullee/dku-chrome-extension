@@ -4,7 +4,7 @@ import { IoIosAddCircle } from 'react-icons/io';
 import moment from 'moment';
 import EditForm from './EditForm';
 
-const re = require('@alexfrankcodes/random-emoji');
+// const re = require('@alexfrankcodes/random-emoji');
 
 const ICON = ['📓', '📕', '📒', '📙', '📘', '📗'];
 
@@ -37,15 +37,16 @@ const TodoList = ({
           </TodoTitle>
           <DoneButton>{todo.completed ? '✅' : ''}</DoneButton>
         </Header>
-        <DDay>
-          D -{' '}
-          {Math.abs(
-            Math.floor(
-              moment.duration(moment(Date.now()).diff(todo.end_at)).asDays(),
-            ),
-          )}
-        </DDay>
-
+        {todo.end_at ? (
+          <DDay>
+            D -{' '}
+            {Math.abs(
+              Math.floor(
+                moment.duration(moment(Date.now()).diff(todo.end_at)).asDays(),
+              ),
+            )}
+          </DDay>
+        ) : null}
         <ActionButtonContainer>
           {todo.completed ? null : (
             <CompleteButton
@@ -79,10 +80,7 @@ const TodoList = ({
           </DeleteButton>
         </ActionButtonContainer>
         {todo.children.map(val => (
-          <Child key={val}>
-            {re.random()}
-            {val}
-          </Child>
+          <Child key={val}>{val}</Child>
         ))}
       </Todo>
     ))}
